@@ -1,0 +1,160 @@
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\csc.exe
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\Microsoft.CodeAnalysis.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\Microsoft.CSharp.Core.targets
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\Microsoft.VisualBasic.Core.targets
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\System.Collections.Immutable.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\System.Reflection.Metadata.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\vbc.exe
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\VBCSCompiler.exe
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\roslyn\VBCSCompiler.exe.config
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\OurMPG.dll.config
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\OurMPG.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\OurMPG.pdb
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Antlr3.Runtime.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\AspNet.ScriptManager.bootstrap.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\AspNet.ScriptManager.jQuery.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\EntityFramework.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\EntityFramework.SqlServer.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.Agent.Intercept.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.DependencyCollector.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.PerfCounterCollector.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.ServerTelemetryChannel.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.Web.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.WindowsServer.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.ApplicationInsights.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.FriendlyUrls.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Core.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Owin.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Host.SystemWeb.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Cookies.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Facebook.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Google.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.OAuth.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Twitter.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.ScriptManager.MSAjax.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.ScriptManager.WebForms.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Web.Infrastructure.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Newtonsoft.Json.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Owin.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\System.Web.Optimization.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\System.Web.Providers.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\WebGrease.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.DependencyCollector.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.ServerTelemetryChannel.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.Web.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AI.WindowsServer.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.ApplicationInsights.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\System.Web.Optimization.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Antlr3.Runtime.pdb
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Newtonsoft.Json.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.FriendlyUrls.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\EntityFramework.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\EntityFramework.SqlServer.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Core.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Owin.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\System.Web.Providers.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Host.SystemWeb.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Facebook.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Cookies.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Google.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Twitter.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\bin\Microsoft.Owin.Security.OAuth.xml
+S:\nkulshre\OurMPG\OurMPG\OurMPG\obj\Debug\OurMPG.csprojResolveAssemblyReference.cache
+S:\nkulshre\OurMPG\OurMPG\OurMPG\obj\Debug\OurMPG.dll
+S:\nkulshre\OurMPG\OurMPG\OurMPG\obj\Debug\OurMPG.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\csc.exe
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\Microsoft.CodeAnalysis.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\Microsoft.CSharp.Core.targets
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\Microsoft.VisualBasic.Core.targets
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\System.Collections.Immutable.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\System.Reflection.Metadata.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\vbc.exe
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\VBCSCompiler.exe
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\roslyn\VBCSCompiler.exe.config
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\OurMPG.dll.config
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\OurMPG.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\OurMPG.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Antlr3.Runtime.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\AspNet.ScriptManager.bootstrap.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\AspNet.ScriptManager.jQuery.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\EntityFramework.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\EntityFramework.SqlServer.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.Agent.Intercept.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.DependencyCollector.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.PerfCounterCollector.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.ServerTelemetryChannel.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.Web.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.WindowsServer.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.ApplicationInsights.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.FriendlyUrls.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Core.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Owin.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Host.SystemWeb.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Cookies.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Facebook.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Google.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.OAuth.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Twitter.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.ScriptManager.MSAjax.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.ScriptManager.WebForms.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Web.Infrastructure.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Newtonsoft.Json.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Owin.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\System.Web.Optimization.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\System.Web.Providers.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\WebGrease.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.DependencyCollector.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.ServerTelemetryChannel.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.Web.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AI.WindowsServer.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.ApplicationInsights.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\System.Web.Optimization.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Antlr3.Runtime.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Newtonsoft.Json.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.FriendlyUrls.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\EntityFramework.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\EntityFramework.SqlServer.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Core.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.Owin.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\System.Web.Providers.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Host.SystemWeb.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Facebook.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Cookies.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Google.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.Twitter.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\Microsoft.Owin.Security.OAuth.xml
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\obj\Debug\OurMPG.csprojResolveAssemblyReference.cache
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\obj\Debug\OurMPG.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\obj\Debug\OurMPG.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\FuelMPGBusiness.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\FuelMPGDAL.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\FuelMPGBusiness.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\OurMPG\bin\FuelMPGDAL.pdb

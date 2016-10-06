@@ -1,0 +1,7 @@
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\bin\Debug\FuelMPGBusiness.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\bin\Debug\FuelMPGBusiness.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\obj\Debug\FuelMPGBusiness.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\obj\Debug\FuelMPGBusiness.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\bin\Debug\FuelMPGDAL.dll
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\bin\Debug\FuelMPGDAL.pdb
+\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGBusiness\obj\Debug\OurMPGBusiness.csprojResolveAssemblyReference.cache
