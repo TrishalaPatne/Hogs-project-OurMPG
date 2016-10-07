@@ -1,5 +1,0 @@
-\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGDAL\bin\Debug\FuelMPGDAL.dll
-\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGDAL\bin\Debug\FuelMPGDAL.pdb
-\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGDAL\obj\Debug\FuelMPGDAL.dll
-\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGDAL\obj\Debug\FuelMPGDAL.pdb
-\\mydocs.uark.edu\mydocs\sk049\Documents\Visual Studio 2015\Projects\OurMPG\FuelMPGDAL\obj\Debug\OurMPGDAL.csprojResolveAssemblyReference.cache
