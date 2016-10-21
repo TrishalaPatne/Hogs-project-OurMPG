@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GasStation.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
@@ -126,9 +127,17 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="Vehicle.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GasStation.aspx.cs">
+      <DependentUpon>GasStation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GasStation.aspx.designer.cs">
+      <DependentUpon>GasStation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OurMPG.Master.cs">
       <DependentUpon>OurMPG.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,6 +146,13 @@
       <DependentUpon>OurMPG.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehicle.aspx.cs">
+      <DependentUpon>Vehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vehicle.aspx.designer.cs">
+      <DependentUpon>Vehicle.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
