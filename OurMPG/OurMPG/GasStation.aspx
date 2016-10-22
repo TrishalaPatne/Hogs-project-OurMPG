@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="GasStation.aspx.cs" Inherits="OurMPG.Location" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form runat="server">
     <div class="container">
         <h3 class="text-left">Add Gas Station record </h3>
        
@@ -100,6 +101,7 @@
             </div>
        
     </div>
+        
     <div id="confirmDialog" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -141,4 +143,5 @@
         $('#errorDialog').modal('show');
     }
     </script>
+        </form>
 </asp:Content>
