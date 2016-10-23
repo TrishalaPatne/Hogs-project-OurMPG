@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -95,10 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GasStation.aspx" />
-<<<<<<< HEAD
-=======
     <Content Include="Home.aspx" />
->>>>>>> admin_ui_screens
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="Register.aspx" />
@@ -132,10 +129,7 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
-<<<<<<< HEAD
-=======
     <Content Include="Login.aspx" />
->>>>>>> admin_ui_screens
     <Content Include="Vehicle.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -147,8 +141,6 @@
     <Compile Include="GasStation.aspx.designer.cs">
       <DependentUpon>GasStation.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,7 +148,7 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
->>>>>>> admin_ui_screens
+
     <Compile Include="OurMPG.Master.cs">
       <DependentUpon>OurMPG.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,8 +157,7 @@
       <DependentUpon>OurMPG.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-=======
+
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,7 +172,7 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
->>>>>>> admin_ui_screens
+
     <Compile Include="Vehicle.aspx.cs">
       <DependentUpon>Vehicle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
