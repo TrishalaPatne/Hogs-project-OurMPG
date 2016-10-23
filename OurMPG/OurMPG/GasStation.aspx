@@ -1,5 +1,7 @@
-ï»¿<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="GasStation.aspx.cs" Inherits="OurMPG.Location" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="GasStation.aspx.cs" Inherits="OurMPG.Location" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form runat="server">
+
     <div class="container">
         <h3 class="text-left">Add Gas Station record </h3>
        
@@ -100,11 +102,12 @@
             </div>
        
     </div>
+
     <div id="confirmDialog" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title">Confirmation</h4>
         </div>
         <div class="modal-body">
@@ -120,7 +123,7 @@
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title text-danger">Error Occured</h4>
         </div>
         <div class="modal-body text-danger">
@@ -141,4 +144,6 @@
         $('#errorDialog').modal('show');
     }
     </script>
+        </form>
+
 </asp:Content>

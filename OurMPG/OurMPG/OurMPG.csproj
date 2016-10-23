@@ -95,8 +95,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GasStation.aspx" />
+<<<<<<< HEAD
+=======
+    <Content Include="Home.aspx" />
+>>>>>>> admin_ui_screens
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
+    <Content Include="Register.aspx" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -127,6 +132,10 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
+<<<<<<< HEAD
+=======
+    <Content Include="Login.aspx" />
+>>>>>>> admin_ui_screens
     <Content Include="Vehicle.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -138,6 +147,16 @@
     <Compile Include="GasStation.aspx.designer.cs">
       <DependentUpon>GasStation.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+>>>>>>> admin_ui_screens
     <Compile Include="OurMPG.Master.cs">
       <DependentUpon>OurMPG.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,6 +165,23 @@
       <DependentUpon>OurMPG.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+>>>>>>> admin_ui_screens
     <Compile Include="Vehicle.aspx.cs">
       <DependentUpon>Vehicle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

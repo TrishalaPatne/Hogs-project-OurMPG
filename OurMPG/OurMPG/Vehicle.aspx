@@ -1,5 +1,7 @@
-ï»¿<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="Vehicle.aspx.cs" Inherits="OurMPG.Vehicle" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="Vehicle.aspx.cs" Inherits="OurMPG.Vehicle" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form runat="server">
+
      <div class="container">
         <h3 class="text-left">Add Vehicle Record</h3>
        
@@ -95,7 +97,7 @@
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title text-success">Confirmation</h4>
         </div>
         <div class="modal-body text-success">
@@ -111,7 +113,7 @@
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title text-danger">Error Occured</h4>
         </div>
         <div class="modal-body text-danger">
@@ -133,5 +135,5 @@
         $('#errorDialog').modal('show');
     }
     </script>
-
+     </form>
 </asp:Content>
