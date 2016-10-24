@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
+using System.Web.Configuration;
 
 namespace OurMPG
 {
@@ -31,10 +32,10 @@ namespace OurMPG
         }
         protected void saveVehicle(object sender, EventArgs e)
         {
-            string sConnectionString = "Data Source=essql1.walton.uark.edu;Initial Catalog=MISGroup25;" + "Integrated Security = True";
+            
             int rowsaffected = 0;
             DateTime now = DateTime.Now;
-            using (SqlConnection connection = new SqlConnection(sConnectionString))
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {

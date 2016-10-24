@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
+using System.Web.Configuration;
 
 namespace OurMPG
 {
@@ -29,10 +30,10 @@ namespace OurMPG
         }
         protected void getLocationID()
         {
-            string sConnectionString = "Data Source=essql1.walton.uark.edu;Initial Catalog=MISGroup25;" + "Integrated Security = True";
+            
             int locationId = 0;
             
-            using (SqlConnection conn = new SqlConnection(sConnectionString))
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
@@ -74,16 +75,16 @@ namespace OurMPG
         }
         protected void saveGasStation(int locationID)
         {
-            string sConnectionString = "Data Source=essql1.walton.uark.edu;Initial Catalog=MISGroup25;" + "Integrated Security = True";
+            
             int rowsaffected = 0;
             DateTime now = DateTime.Now;
-            using (SqlConnection connection = new SqlConnection(sConnectionString))
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "INSERT INTO gasStation (locationId,brandName,fuelType,fuelPrice,createdBy,createdDate) VALUES (@locationId, @brandName, @fuelType, @fuelPrice,@createdBy, @createdDate)";
+                    command.CommandText = "INSERT INTO gasStationPrice (locationId,brandName,fuelType,fuelPrice,createdBy,createdDate) VALUES (@locationId, @brandName, @fuelType, @fuelPrice,@createdBy, @createdDate)";
                     command.Parameters.AddWithValue("@locationId", locationID);
                     command.Parameters.AddWithValue("@brandName", brand.Value);
                     command.Parameters.AddWithValue("@fuelType", fueltype.Value);
@@ -124,16 +125,16 @@ namespace OurMPG
         protected void saveLocation(object sender, EventArgs e)
         {
             
-            string sConnectionString = "Data Source=essql1.walton.uark.edu;Initial Catalog=MISGroup25;" + "Integrated Security = True";
+           
             int rowsaffected = 0;
             DateTime now = DateTime.Now;
-            using (SqlConnection connection = new SqlConnection(sConnectionString))
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "INSERT INTO location (zipCode,streetAddress,latitude,longtitude,city,state,createdBy,createdDate) VALUES (@zipCode, @streetAddress, @latitude, @longtitude, @city, @state,@createdBy,@createdDate)";
+                    command.CommandText = "INSERT INTO location (zipCode,streetAddress,latitude,longtitude,city,state,sourceIndicator,createdBy,createdDate) VALUES (@zipCode, @streetAddress, @latitude, @longtitude, @city, @state,@sourceIndicator, @createdBy,@createdDate)";
                     command.Parameters.AddWithValue("@zipCode", zipcode.Value);
                     command.Parameters.AddWithValue("@streetAddress", streetaddr.Value);
                     command.Parameters.AddWithValue("@latitude", latitude.Value);
@@ -142,6 +143,8 @@ namespace OurMPG
                     command.Parameters.AddWithValue("@state", state.Value);
                     command.Parameters.AddWithValue("@createdBy", "admin");
                     command.Parameters.AddWithValue("@createdDate", now.ToString());
+                    command.Parameters.AddWithValue("@sourceIndicator", 0);
+                    
                     try
                     {
                         connection.Open();
@@ -155,7 +158,7 @@ namespace OurMPG
                     finally
                     {
                         connection.Close();
-                    } 
+                    }    
                 }
             } 
             
