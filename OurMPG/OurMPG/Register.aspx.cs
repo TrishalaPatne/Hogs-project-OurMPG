@@ -9,6 +9,7 @@ using System.Web.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 using System.Data;
+using System.Diagnostics;
 
 namespace OurMPG
 {
@@ -16,20 +17,29 @@ namespace OurMPG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            addressPanel.Visible = false;
+            myGaragePanel.Visible = false;
+            /*confirmDialog.Visible = false;
+            errorDialog.Visible   = false;*/
+            if (!this.IsPostBack)
+            {
+                bindMakeDropdown();
+            }
         }
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
+            int rowsaffected = 0;
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-            String selectQuery = "SELECT userId, userName, password FROM userInfo WHERE userName = '" + txtNewUserName.Text + "'";
+            String selectQuery = "SELECT userId, userName, password FROM userInfo WHERE userName = @checkUserName";
             SqlCommand selectCommand = new SqlCommand(selectQuery, sqlConnection);
+            selectCommand.Parameters.Add("@checkUserName", SqlDbType.VarChar).Value = txtNewUserName.Text;
             SqlDataReader Dr;
             sqlConnection.Open();
             Dr = selectCommand.ExecuteReader();
             if (Dr.HasRows)
             {
-                lblMsg2.Text = "This User Name already exists";
+                lblMsg1.Text = "This User Name already exists";
                 sqlConnection.Close();
             }
             else if (txtNewPwd.Text == txtNewValidatePwd.Text)
@@ -40,7 +50,7 @@ namespace OurMPG
                 string passwordString = System.Text.Encoding.UTF8.GetString(md5Pwd);
                 DateTime currentDate = DateTime.Now;
 
-                String insertQuery = "INSERT INTO userInfo(roleId, userName, password, fullName, eMail, dob, gender, incomeBracket, homeOwner, householdSize, createdBy, createdDate) VALUES (1, @UserName, @Password, @FullName, @Email, @Dob, @Gender, @IncomeBracket, @HomeOwner, @HouseholdSize, 'ADMIN', @currentDate)";
+                String insertQuery = "INSERT INTO userInfo(roleId, userName, password, fullName, eMail, dob, gender, incomeBracket, homeOwner, householdSize, createdBy, createdDate) output INSERTED.userId VALUES (1, @UserName, @Password, @FullName, @Email, @Dob, @Gender, @IncomeBracket, @HomeOwner, @HouseholdSize, 'USER', @currentDate)";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtNewUserName.Text;
                 insertCommand.Parameters.Add("@Password", SqlDbType.VarChar).Value = passwordString;
@@ -53,18 +63,273 @@ namespace OurMPG
                 insertCommand.Parameters.Add("@HouseholdSize", SqlDbType.Int).Value = txtHouseholdSize.Text;
                 insertCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
 
-                sqlConnection.Open();
-                insertCommand.ExecuteNonQuery();
+                try
+                {
+                    sqlConnection.Open();
+                    int sessionUserId = (int)insertCommand.ExecuteScalar();
+                    lblMsg1.Text = String.Empty;
+                    lblMsg2.Text = String.Empty;
 
-                /*Session["userId"] = Dr["userId"].ToString();*/
+                    Session["UserId"] = sessionUserId;
 
-                Response.Redirect("Home.aspx");
+                    rowsaffected = insertCommand.ExecuteNonQuery();
+                    if (rowsaffected > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showConfirmDialog();", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showErrorDialog();", true);
+                    }
+
+                    /*Response.Redirect("Home.aspx");*/
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    sqlConnection.Close();
+                }
             }
             else
             {
                 lblMsg2.Text = "Passwords did not match";
                 sqlConnection.Close();
             }
+        }
+
+        protected void btnContinueAddress_Click(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+        }
+
+        protected void btnAddAddress_Click(object sender, EventArgs e)
+        {
+            DateTime currentDate = DateTime.Now;
+            SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            String insertHomeQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 1, 'ADMIN', @currentDate)";
+            SqlCommand insertHomeCommand = new SqlCommand(insertHomeQuery, sqlConnection);
+            insertHomeCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtHomeZip.Text;
+            insertHomeCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtHomeStreetAddress.Text;
+            insertHomeCommand.Parameters.Add("@Latitude", SqlDbType.VarChar).Value = txtHomeLat.Text;
+            insertHomeCommand.Parameters.Add("@Longtitude", SqlDbType.VarChar).Value = txtHomeLong.Text;
+            insertHomeCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtHomeCity.Text;
+            insertHomeCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtHomeState.Text;
+            insertHomeCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+
+            sqlConnection.Open();
+            int idHome = (int)insertHomeCommand.ExecuteScalar();
+
+            String updateHomeQuery = "UPDATE userInfo SET locationIdHome = @locationIdHome WHERE userName = @userName";
+            SqlCommand updateHomeCommand = new SqlCommand(updateHomeQuery, sqlConnection);
+            updateHomeCommand.Parameters.Add("@locationIdHome", SqlDbType.VarChar).Value = idHome;
+            updateHomeCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = txtNewUserName.Text;
+
+            updateHomeCommand.ExecuteNonQuery();
+
+            String insertWorkQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 2, 'ADMIN', @currentDate)";
+            SqlCommand insertWorkCommand = new SqlCommand(insertWorkQuery, sqlConnection);
+            insertWorkCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtHomeZip.Text;
+            insertWorkCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtHomeStreetAddress.Text;
+            insertWorkCommand.Parameters.Add("@Latitude", SqlDbType.VarChar).Value = txtHomeLat.Text;
+            insertWorkCommand.Parameters.Add("@Longtitude", SqlDbType.VarChar).Value = txtHomeLong.Text;
+            insertWorkCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtHomeCity.Text;
+            insertWorkCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtHomeState.Text;
+            insertWorkCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+
+            int idWork = (int)insertWorkCommand.ExecuteScalar();
+
+            String updateWorkQuery = "UPDATE userInfo SET locationIdWork = @locationIdWork WHERE userName = @userName";
+            SqlCommand updateWorkCommand = new SqlCommand(updateWorkQuery, sqlConnection);
+            updateWorkCommand.Parameters.Add("@locationIdWork", SqlDbType.VarChar).Value = idWork;
+            updateWorkCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = txtNewUserName.Text;
+
+            updateWorkCommand.ExecuteNonQuery();
+
+            if (sqlConnection.State == System.Data.ConnectionState.Open)
+                sqlConnection.Close();
+
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showNextDialog();", true);
+        }
+
+        protected void btnContinueGarage_Click(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+        }
+
+        protected void bindMakeDropdown()
+        {
+                SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+                    sqlConnection.Open();
+                    SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT make FROM vehicle", sqlConnection);
+                    SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
+                    DataSet drpDS = new DataSet();
+                    drpAdapter.Fill(drpDS);
+                    sqlConnection.Close();
+                   
+                    drpMake.DataSource = drpDS;
+                    drpMake.DataTextField = "make";
+                    drpMake.DataValueField = "make";
+                    drpMake.DataBind();
+                    
+            /*catch (Exception ex)
+            {
+                // Handle the error
+                Debug.WriteLine(ex.Message);
+            }*/
+        }
+
+        protected void drpMakeSelected_selectedIndexChanged(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+            
+            SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            sqlConnection.Open();
+            SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT model FROM vehicle WHERE make = @make", sqlConnection);
+            SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
+            DataSet drpDS = new DataSet();
+            drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue);
+
+            drpAdapter.Fill(drpDS);
+            sqlConnection.Close();
+
+            drpModel.DataSource = drpDS;
+            drpModel.DataTextField = "model";
+            drpModel.DataValueField = "model";
+            drpModel.DataBind();            
+        }
+
+        protected void drpModelSelected_selectedIndexChanged(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+            
+            SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            sqlConnection.Open();
+            SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT year FROM vehicle WHERE make = @make and model = @model", sqlConnection);
+            SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
+            DataSet drpDS = new DataSet();
+            drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue); ;
+            drpCommand.Parameters.Add("@model", SqlDbType.VarChar).Value = Convert.ToString(drpModel.SelectedValue);
+
+
+            drpAdapter.Fill(drpDS);
+            sqlConnection.Close();
+
+            drpYear.DataSource = drpDS;
+            drpYear.DataTextField = "year";
+            drpYear.DataValueField = "year";
+            drpYear.DataBind();
+        }
+
+        protected void drpYearSelected_selectedIndexChanged(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+            SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            sqlConnection.Open();
+            SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT vehicleid, CONCAT(transmission, ' ',Displ, ' ',Cyl, ' ',driveStyle, ' ', vehicleClass) AS specs FROM vehicle WHERE make = @make and model = @model and year = @year", sqlConnection);
+            SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
+            DataSet drpDS = new DataSet();
+            drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue); ;
+            drpCommand.Parameters.Add("@model", SqlDbType.VarChar).Value = Convert.ToString(drpModel.SelectedValue);
+            drpCommand.Parameters.Add("@year", SqlDbType.VarChar).Value = Convert.ToString(drpYear.SelectedValue);
+
+
+            drpAdapter.Fill(drpDS);
+            sqlConnection.Close();
+
+            drpSpecs.DataSource = drpDS;
+            drpSpecs.DataTextField = "specs";
+            drpSpecs.DataValueField = "vehicleId";
+            drpSpecs.DataBind();
+        }
+
+        protected void drpSpecsSelected_selectedIndexChanged(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+        }
+
+        protected void drpOwnerSelected_selectedIndexChanged(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+        }
+        protected void btnAddCar_Click(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+            DateTime currentDate = DateTime.Now;
+            int userid = (int)Session["userId"];
+            string vehicleId = drpSpecs.SelectedValue;
+            int rowsaffected = 0;
+
+            SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            String insertVehicleQuery = "INSERT INTO userVehicle(userId, vehicleId, vehicleName, color, ownershipStatus, createdBy, createdDate) VALUES (@userId, @vehicleId, @vehicleName, @color, @ownershipStatus, 'USER', @currentDate)";
+            SqlCommand insertVehicleCommand = new SqlCommand(insertVehicleQuery, sqlConnection);
+            insertVehicleCommand.Parameters.Add("@userId", SqlDbType.VarChar).Value = userid;
+            insertVehicleCommand.Parameters.Add("@vehicleId", SqlDbType.VarChar).Value = vehicleId;
+            insertVehicleCommand.Parameters.Add("@vehicleName", SqlDbType.VarChar).Value = txtCarName.Text;
+            insertVehicleCommand.Parameters.Add("@color", SqlDbType.VarChar).Value = txtColor.Text;
+            insertVehicleCommand.Parameters.Add("@ownershipStatus", SqlDbType.VarChar).Value = drpOwner.Text;
+            insertVehicleCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+
+            try
+            {
+                sqlConnection.Open();
+
+                rowsaffected = insertVehicleCommand.ExecuteNonQuery();
+
+                if (rowsaffected > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showNextCarDialog();", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showErrorDialog();", true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+        }
+
+        protected void btnNextCarYes_Click(object sender, EventArgs e)
+        {
+            addressPanel.Visible = true;
+            myGaragePanel.Visible = true;
+            drpMake.SelectedIndex = 0;
+            drpModel.SelectedIndex = 0;
+            drpYear.SelectedIndex = 0;
+            drpSpecs.SelectedIndex = 0;
+            drpOwner.SelectedIndex = 0;
+            txtColor.Text = String.Empty;
+            txtCarName.Text = String.Empty;
+            bindMakeDropdown();
+        }
+
+        protected void btnNextCarNo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
         }
     }
 }
