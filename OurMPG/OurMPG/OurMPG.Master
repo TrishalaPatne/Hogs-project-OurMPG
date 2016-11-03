@@ -13,6 +13,7 @@
    <link rel="stylesheet" href="Content/bootstrap-theme.min.css"/>
 </head>
 <body>
+
     <div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -33,6 +34,7 @@
                         <li><a href="Register.aspx">Register</a></li>
                         <li><a href="Vehicle.aspx">Vehicle</a></li>
                         <li><a href="GasStation.aspx">GasStation</a></li>
+                        <li><a href="FuelPurchase.aspx">FuelPurchase</a></li>
                     </ul>
                     
                 </div>
@@ -43,5 +45,6 @@
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
+         
 </body>
 </html>
