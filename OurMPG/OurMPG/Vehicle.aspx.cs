@@ -30,6 +30,7 @@ namespace OurMPG
             highwaympg.Value = "";
             combmpg.Value = "";
         }
+        //saves vehicle record
         protected void saveVehicle(object sender, EventArgs e)
         {
             
@@ -60,11 +61,11 @@ namespace OurMPG
                     {
                         connection.Open();
                         rowsaffected = command.ExecuteNonQuery();
-
+                        
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(ex.Message);
+                        Response.Redirect("Error.aspx");
                     }
                     finally
                     {
@@ -75,12 +76,13 @@ namespace OurMPG
 
             if (rowsaffected > 0)
             {
+                //shows success pop up
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Confirm();", true);
                 clearform();
             }
             else
             {
-
+                //shows error dialog
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showErrorDialog();", true);
             }  
         }

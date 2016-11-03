@@ -28,6 +28,7 @@ namespace OurMPG
             city.Value = "";
             state.Value = "";
         }
+        //gets locationID from database
         protected void getLocationID()
         {
             
@@ -63,7 +64,8 @@ namespace OurMPG
                     }
                     catch (Exception exp)
                     {
-                        Console.Write(exp.Message);
+                        Response.Redirect("Error.aspx");
+                        throw;
                     }
                     finally
                     {
@@ -73,6 +75,7 @@ namespace OurMPG
             }
            
         }
+        //saves gas station record
         protected void saveGasStation(int locationID)
         {
             
@@ -100,7 +103,8 @@ namespace OurMPG
                     }
                     catch (Exception ex)
                     {
-                        Console.Write(ex.Message);
+                        Response.Redirect("Error.aspx");
+                        throw;
                     }
                     finally
                     {
@@ -121,7 +125,7 @@ namespace OurMPG
             }
 
         }
-
+        //saves location record
         protected void saveLocation(object sender, EventArgs e)
         {
             
@@ -153,7 +157,8 @@ namespace OurMPG
                     }
                     catch (Exception ex)
                     {
-                        Console.Write(ex.Message);
+                        Response.Redirect("Error.aspx");
+                        throw;
                     }
                     finally
                     {

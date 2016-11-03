@@ -102,7 +102,7 @@
             </div>
        
     </div>
-
+         <!-- success message dialog -->
     <div id="confirmDialog" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -119,6 +119,7 @@
     </div>
     </div>
         </div>
+        <!-- error message dialog -->
      <div id="errorDialog" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
