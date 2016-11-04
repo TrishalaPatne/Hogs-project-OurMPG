@@ -41,6 +41,7 @@ namespace OurMPG
                 while (Dr.Read())
                 {
                     Session["userId"] = Dr["userId"].ToString();
+                    Session["userName"] = txtUserName.Text;
 
                     Response.Redirect("Home.aspx");
                 }
