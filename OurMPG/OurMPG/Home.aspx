@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="OurMPG.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div class="container" id="ourmpg-carousel">
+      <h2 class="text-center">Welcome to OurMPG Portal</h2>
       
       <div class="row">
         
-        <div class="col-xs-18 col-sm-6 col-md-4">
+        <div class="col-xs-18 col-sm-6 col-md-4 col-md-offset-1">
           <div class="thumbnail">
             <img src="images/FuelPurchase.jpg" alt="" />
               <div class="caption">
@@ -15,7 +16,7 @@
           </div>
         </div>
 
-        <div class="col-xs-18 col-sm-6 col-md-4">
+        <div class="col-xs-18 col-sm-6 col-md-4 col-md-offset-1">
           <div class="thumbnail">
             <img src="images/reports.jpeg" alt="" />
               <div class="caption">
@@ -29,5 +30,13 @@
       </div><!-- End row -->
       
     </div><!-- End container -->
+
+    <footer>
+        <div class="container">
+        <div class="form-group col-xs-8"></div>
+        <div class="form-group col-xs-8"></div>
+        <p class="text-muted col-sm-12"> Designed and built by MIS Project Group 5 - For any inquiries please contact nkulshre@uark.edu, rs018@uark.edu, sa030@uark.edu, sk049@uark.edu, tpatne@uark.edu</p>
+        </div>
+    </footer>
 
 </asp:Content>

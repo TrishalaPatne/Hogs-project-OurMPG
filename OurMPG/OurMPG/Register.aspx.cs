@@ -89,9 +89,9 @@ namespace OurMPG
                     }
 
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Debug.WriteLine(ex.Message);
+                    Response.Redirect("Error.aspx");
                 }
                 finally
                 {
@@ -167,9 +167,9 @@ namespace OurMPG
 
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showNextDialog();", true);
             }
-            catch(Exception ex)
+            catch
             {
-                Debug.WriteLine(ex.Message);
+                Response.Redirect("Error.aspx");
             }
             finally
             {
@@ -240,9 +240,9 @@ namespace OurMPG
                 drpModel.DataBind();
                 drpModel.Items.Insert(0, "--Select--");
             }
-            catch(Exception ex)
+            catch
             {
-                Debug.WriteLine(ex.Message);
+                Response.Redirect("Error.aspx");
             }
                 finally
             {
@@ -278,9 +278,9 @@ namespace OurMPG
 
                 drpYear.Items.Insert(0, "--Select--");
             }
-            catch(Exception ex)
+            catch
             {
-                Debug.WriteLine(ex.Message);
+                Response.Redirect("Error.aspx");
             }
             finally
             {
@@ -317,9 +317,9 @@ namespace OurMPG
 
                 drpSpecs.Items.Insert(0, "--Select--");
             }
-            catch(Exception ex)
+            catch
             {
-                Debug.WriteLine(ex.Message);
+                Response.Redirect("Error.aspx");
             }
             finally
             {
@@ -381,9 +381,9 @@ namespace OurMPG
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
-                Debug.WriteLine(ex.Message);
+                Response.Redirect("Error.aspx");
             }
             finally
             {
@@ -406,7 +406,7 @@ namespace OurMPG
             txtCarName.Text = String.Empty;
         }
 
-        /*Redirects user to Home if he does not another car*/
+        /*Redirects user to Home if he does not own another car thus by completing Registration*/
 
         protected void btnNextCarNo_Click(object sender, EventArgs e)
         {

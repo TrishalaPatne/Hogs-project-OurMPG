@@ -16,42 +16,41 @@ namespace OurMPG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Goto OurMPG Home if User is Authenticated
+           
         }
 
+        //Goto OurMPG Home if User is Authenticated
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             String SQLQuery = "SELECT userId, userName, password FROM userInfo WHERE userName = @userName AND password = @password";
             SqlCommand command = new SqlCommand(SQLQuery, sqlConnection);
+                var md5 = new MD5CryptoServiceProvider();
+                byte[] md5Pwd = md5.ComputeHash(Encoding.UTF8.GetBytes(txtPwd.Text));
+                string passwordString = System.Text.Encoding.UTF8.GetString(md5Pwd);
 
-            var md5 = new MD5CryptoServiceProvider();
-            byte[] md5Pwd = md5.ComputeHash(Encoding.UTF8.GetBytes(txtPwd.Text));
-            string passwordString = System.Text.Encoding.UTF8.GetString(md5Pwd);
+                command.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtUserName.Text;
+                command.Parameters.Add("@Password", SqlDbType.VarChar).Value = passwordString;
 
-            command.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtUserName.Text;
-            command.Parameters.Add("@Password", SqlDbType.VarChar).Value = passwordString;
+                SqlDataReader Dr;
+                sqlConnection.Open();
+                Dr = command.ExecuteReader();
 
-            SqlDataReader Dr;
-            sqlConnection.Open();
-            Dr = command.ExecuteReader();
-            
-            if (Dr.HasRows)
-            {
-                while (Dr.Read())
+                if (Dr.HasRows)
                 {
-                    Session["userId"] = Dr["userId"].ToString();
-                    Session["userName"] = txtUserName.Text;
+                    while (Dr.Read())
+                    {
+                        Session["userId"] = Dr["userId"].ToString();
+                        Session["userName"] = txtUserName.Text;
 
-                    Response.Redirect("Home.aspx");
+                        Response.Redirect("Home.aspx");
+                    }
                 }
-            }
-            else
-            {
-                lblMsg1.Text = "Please enter a valid Username and Password.";
-            }
-            Dr.Close();
-            sqlConnection.Close();
+                else
+                {
+                    lblMsg1.Text = "Please enter a valid Username and Password.";
+                }
+                Dr.Close();
         }
 
         protected void btnSignUp_Click(object sender, EventArgs e)
