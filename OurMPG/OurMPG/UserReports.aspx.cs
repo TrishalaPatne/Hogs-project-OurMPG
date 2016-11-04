@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Configuration;
+using System.Web.Configuration;
 using System.Data.SqlClient;
 
 
@@ -72,7 +72,7 @@ namespace OurMPG
 
             
 
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
                 SqlCommand cmd = new SqlCommand("averageMPG", con);
@@ -135,7 +135,7 @@ namespace OurMPG
         protected void btnSubmitm4_click(object sender, EventArgs e)
         {
 
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
                 SqlCommand cmd = new SqlCommand("useraverageMPG", con);
@@ -181,7 +181,7 @@ namespace OurMPG
 
         private DataTable fuelPurchasedata(string username)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("fuelPurchaseHist", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -192,7 +192,7 @@ namespace OurMPG
         }
         private DataTable getVehicleMake (string user)
          {
-             string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
              SqlConnection con = new SqlConnection(CS);
              SqlDataAdapter da = new SqlDataAdapter("uservehiclemake", con);
             da.SelectCommand.Parameters.Add(new SqlParameter("@user", user));
@@ -203,7 +203,7 @@ namespace OurMPG
          }
         private DataTable getVehicleModel(string vmake)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("spvehiclemodel", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -214,7 +214,7 @@ namespace OurMPG
         }
         private DataTable getVehicleYear(string mo)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("Vehicleyear", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -225,7 +225,7 @@ namespace OurMPG
         }
         private DataTable getEPA(string m, string md, string y)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("SpEPA", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -239,7 +239,7 @@ namespace OurMPG
         }
         private DataTable getData(string SPName, SqlParameter SPParameter)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter(SPName, con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -254,7 +254,7 @@ namespace OurMPG
         
         protected DataTable compare(string m, string md, string y)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("compare", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -314,7 +314,7 @@ namespace OurMPG
         }
         private DataTable userVehicleModel(string make)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("uservehiclemodel", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -336,7 +336,7 @@ namespace OurMPG
         }
         private DataTable userVehicleYear(string make,string model)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("uservehicleyear", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -349,7 +349,7 @@ namespace OurMPG
         }
         protected DataTable fuelPurchaseauto(string u,string m, string md, string y)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("autoFuelPurchase", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -364,7 +364,7 @@ namespace OurMPG
         }
         protected DataTable fuelPurchasetime(string u, string d1, string d2)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("timeFuelPurchase", con);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
