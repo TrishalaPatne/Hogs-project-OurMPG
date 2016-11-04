@@ -35,6 +35,7 @@
                         <li id="listFuelPurchase" runat="server"><a href="FuelPurchase.aspx">Fuel Purchase</a></li>
                         <li id="listGasStation" runat="server"><a href="GasStation.aspx">GasStation</a></li>
                         <li id="listUserReports" runat="server"><a href="UserReports.aspx">Reports</a></li>
+                        <li id="listAdminReports" runat="server"><a href="AdminReports.aspx">Admin Reports</a></li>
                     </ul>
                     
                 </div>
