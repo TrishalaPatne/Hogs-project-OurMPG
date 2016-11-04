@@ -31,16 +31,21 @@ namespace OurMPG
 
                 sqlConnection.Open();
                 int roleId = (int)selectCommand.ExecuteScalar();
-
+                //role 1 user, so we hide admin screens
                 if(roleId == 1)
                 {
                     listLogin.Visible = false;
                     listRegister.Visible = false;
+                    listUserReports.Visible = true;
+                    listGasStation.Visible = false;
+                    listVehicle.Visible = false;
                 }
+                // role 2 admin
                 else if (roleId == 2)
                 {
                     listGasStation.Visible = true;
                     listVehicle.Visible = true;
+                    listUserReports.Visible = true;
                 }
             }
     }

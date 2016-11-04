@@ -49,6 +49,15 @@ namespace OurMPG {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl listVehicle;
         
         /// <summary>
+        /// listFuelPurchase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listFuelPurchase;
+        
+        /// <summary>
         /// listGasStation control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace OurMPG {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl listGasStation;
+        
+        /// <summary>
+        /// listUserReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listUserReports;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
