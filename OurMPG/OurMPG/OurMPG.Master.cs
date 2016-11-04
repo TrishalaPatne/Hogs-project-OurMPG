@@ -23,6 +23,7 @@ namespace OurMPG
             {
                 listGasStation.Visible = false;
                 listVehicle.Visible = false;
+                listAdminReports.Visible = false;
             }
             else
             {
@@ -39,6 +40,7 @@ namespace OurMPG
                     listUserReports.Visible = true;
                     listGasStation.Visible = false;
                     listVehicle.Visible = false;
+                    listAdminReports.Visible = false;
                 }
                 // role 2 admin
                 else if (roleId == 2)
@@ -46,6 +48,7 @@ namespace OurMPG
                     listGasStation.Visible = true;
                     listVehicle.Visible = true;
                     listUserReports.Visible = true;
+                    listAdminReports.Visible = true;
                 }
             }
     }

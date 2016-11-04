@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace OurMPG
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class AdminReports : System.Web.UI.Page
     {
         
         protected void Page_Load(object sender, EventArgs e)

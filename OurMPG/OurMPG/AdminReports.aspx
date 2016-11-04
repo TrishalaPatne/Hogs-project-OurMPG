@@ -1,14 +1,14 @@
 ﻿
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="AdminReports.aspx.cs" Inherits="OurMPG.WebForm1" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="AdminReports.aspx.cs" Inherits="OurMPG.AdminReports" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+    <form id="AdminReportForm" runat="server">
     <div class="container">
         <h2>Reports</h2>
         <ul class="nav nav-tabs" id="reportstab">
             
             <li ><a data-toggle="tab" href="#menu1">Fuel Purchases</a></li>
-            <li><a data-toggle="tab" href="#menu2">compare</a></li>
+            <li><a data-toggle="tab" href="#menu2">Compare MPG</a></li>
             
         </ul>
 
@@ -17,7 +17,7 @@
                 <p>Please Enter data to view fuel purchases</p>
                 <div class="form-group">
                     <label class="col-md-4 control-label">SelectFuel</label>
-                    <select id="selectFuel" runat="server" onchange="this.form.submit()"  >
+                    <select id="selectFuel" runat="server" onchange="javascript:AdminReportForm.submit()"  >
                         <option value="type1">Select</option>
                     </select>
 
@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Location</label>
-                    <select id="selectLocation" runat="server" onchange="this.form.submit()" >
+                    <select id="selectLocation" runat="server" onchange="javascript:AdminReportForm.submit()" >
                         <option value="type1">Select</option>
                     </select>
 
@@ -37,11 +37,11 @@
                     </br>
                   <div class="form-group">
                 <label class="col-md-4 control-label">From Date</label>
-                <input type="date" id="date3" runat="server" onchange="this.form.submit()"/>
+                <input type="date" id="date3" runat="server" onchange="javascript:AdminReportForm.submit()"/>
             </div>
         <div class="form-group">
                 <label class="col-md-4 control-label">To Date</label>
-                <input type="date" id="date4" runat="server" onchange="this.form.submit()" />
+                <input type="date" id="date4" runat="server" onchange="javascript:AdminReportForm.submit()" />
             </div>
                 <div class="btn-toolbar">
                     <button type="button" id="Button4" class="btn btn-primary btn-sm" onserverclick="btnGenerate_click" runat="server">Submit</button>
@@ -87,7 +87,7 @@
                 <p>Please Enter Automobile data</p>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Make</label>
-                    <select id="selectMake" runat="server" onchange="this.form.submit()" onserverchange="selectMake_Changed" >
+                    <select id="selectMake" runat="server" onchange="javascript:AdminReportForm.submit()" onserverchange="selectMake_Changed" >
                         <option value="type1">Select</option>
                     </select>
 
@@ -96,14 +96,14 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Model</label>
-                    <select id="selectModel" runat="server" onchange="this.form.submit()" onserverchange="selectModel_Changed">
+                    <select id="selectModel" runat="server" onchange="javascript:AdminReportForm.submit()" onserverchange="selectModel_Changed">
                         <option value="type1">Select</option>
                     </select>
 
                 </div>
                 <div class="form-group" >
                     <label class="col-md-4 control-label">Year</label>
-                    <select id="selectYear" runat="server" onchange="this.form.submit()" >
+                    <select id="selectYear" runat="server" onchange="javascript:AdminReportForm.submit()" >
                         <option value="type1">Select</option>
                     </select>
                     <%--  --%>
@@ -155,6 +155,7 @@
                 }
             });
         </script>
+    </form>
 </asp:Content>
 
 
