@@ -17,19 +17,23 @@ namespace OurMPG
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*Hide the Address and Garage Panel on first load*/
+
             addressPanel.Visible = false;
             myGaragePanel.Visible = false;
-            /*confirmDialog.Visible = false;
-            errorDialog.Visible   = false;*/
+
+            /*Bind dropdown on every load*/
+
             if (!this.IsPostBack)
             {
                 bindMakeDropdown();
             }
         }
 
+        /*Used to create the User Account with unique username and encrypted password*/
+         
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            int rowsaffected = 0;
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             String selectQuery = "SELECT userId, userName, password FROM userInfo WHERE userName = @checkUserName";
             SqlCommand selectCommand = new SqlCommand(selectQuery, sqlConnection);
@@ -49,8 +53,10 @@ namespace OurMPG
                 byte[] md5Pwd = md5.ComputeHash(Encoding.UTF8.GetBytes(txtNewPwd.Text));
                 string passwordString = System.Text.Encoding.UTF8.GetString(md5Pwd);
                 DateTime currentDate = DateTime.Now;
+                int sessionUserId = 0;
+                string sessionUserName = txtNewUserName.Text;
 
-                String insertQuery = "INSERT INTO userInfo(roleId, userName, password, fullName, eMail, dob, gender, incomeBracket, homeOwner, householdSize, createdBy, createdDate) output INSERTED.userId VALUES (1, @UserName, @Password, @FullName, @Email, @Dob, @Gender, @IncomeBracket, @HomeOwner, @HouseholdSize, 'USER', @currentDate)";
+                String insertQuery = "INSERT INTO userInfo(roleId, userName, password, fullName, eMail, dob, gender, incomeBracket, homeOwner, householdSize, createdBy, createdDate) output INSERTED.userId VALUES (1, @UserName, @Password, @FullName, @Email, @Dob, @Gender, @IncomeBracket, @HomeOwner, @HouseholdSize, @UserName, @currentDate)";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtNewUserName.Text;
                 insertCommand.Parameters.Add("@Password", SqlDbType.VarChar).Value = passwordString;
@@ -66,14 +72,14 @@ namespace OurMPG
                 try
                 {
                     sqlConnection.Open();
-                    int sessionUserId = (int)insertCommand.ExecuteScalar();
+                    sessionUserId = (int)insertCommand.ExecuteScalar();
                     lblMsg1.Text = String.Empty;
                     lblMsg2.Text = String.Empty;
 
                     Session["UserId"] = sessionUserId;
+                    Session["UserName"] = sessionUserName;
 
-                    rowsaffected = insertCommand.ExecuteNonQuery();
-                    if (rowsaffected > 0)
+                    if (sessionUserId > 0)
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showConfirmDialog();", true);
                     }
@@ -81,8 +87,6 @@ namespace OurMPG
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showErrorDialog();", true);
                     }
-
-                    /*Response.Redirect("Home.aspx");*/
 
                 }
                 catch (Exception ex)
@@ -101,17 +105,21 @@ namespace OurMPG
             }
         }
 
+        
+        /* Shows the Address Panel on click from the dialog box*/
         protected void btnContinueAddress_Click(object sender, EventArgs e)
         {
             addressPanel.Visible = true;
         }
 
+        /*Stores the work and home location for the user*/
         protected void btnAddAddress_Click(object sender, EventArgs e)
         {
             DateTime currentDate = DateTime.Now;
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            String insertHomeQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 1, 'ADMIN', @currentDate)";
+            try { 
+            
+            String insertHomeQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 1, @UserName, @currentDate)";
             SqlCommand insertHomeCommand = new SqlCommand(insertHomeQuery, sqlConnection);
             insertHomeCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtHomeZip.Text;
             insertHomeCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtHomeStreetAddress.Text;
@@ -120,47 +128,64 @@ namespace OurMPG
             insertHomeCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtHomeCity.Text;
             insertHomeCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtHomeState.Text;
             insertHomeCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+            insertHomeCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtNewUserName.Text;
 
-            sqlConnection.Open();
-            int idHome = (int)insertHomeCommand.ExecuteScalar();
+            
+                sqlConnection.Open();
+                int idHome = (int)insertHomeCommand.ExecuteScalar();
 
-            String updateHomeQuery = "UPDATE userInfo SET locationIdHome = @locationIdHome WHERE userName = @userName";
-            SqlCommand updateHomeCommand = new SqlCommand(updateHomeQuery, sqlConnection);
-            updateHomeCommand.Parameters.Add("@locationIdHome", SqlDbType.VarChar).Value = idHome;
-            updateHomeCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = txtNewUserName.Text;
+                String updateHomeQuery = "UPDATE userInfo SET locationIdHome = @locationIdHome WHERE userName = @userName";
+                SqlCommand updateHomeCommand = new SqlCommand(updateHomeQuery, sqlConnection);
+                updateHomeCommand.Parameters.Add("@locationIdHome", SqlDbType.VarChar).Value = idHome;
+                updateHomeCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = txtNewUserName.Text;
 
-            updateHomeCommand.ExecuteNonQuery();
+                updateHomeCommand.ExecuteNonQuery();
 
-            String insertWorkQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 2, 'ADMIN', @currentDate)";
-            SqlCommand insertWorkCommand = new SqlCommand(insertWorkQuery, sqlConnection);
-            insertWorkCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtHomeZip.Text;
-            insertWorkCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtHomeStreetAddress.Text;
-            insertWorkCommand.Parameters.Add("@Latitude", SqlDbType.VarChar).Value = txtHomeLat.Text;
-            insertWorkCommand.Parameters.Add("@Longtitude", SqlDbType.VarChar).Value = txtHomeLong.Text;
-            insertWorkCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtHomeCity.Text;
-            insertWorkCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtHomeState.Text;
-            insertWorkCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+                String insertWorkQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 2, @UserName, @currentDate)";
+                SqlCommand insertWorkCommand = new SqlCommand(insertWorkQuery, sqlConnection);
+                insertWorkCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtHomeZip.Text;
+                insertWorkCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtHomeStreetAddress.Text;
+                insertWorkCommand.Parameters.Add("@Latitude", SqlDbType.VarChar).Value = txtHomeLat.Text;
+                insertWorkCommand.Parameters.Add("@Longtitude", SqlDbType.VarChar).Value = txtHomeLong.Text;
+                insertWorkCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtHomeCity.Text;
+                insertWorkCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtHomeState.Text;
+                insertWorkCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+                insertWorkCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtNewUserName.Text;
 
-            int idWork = (int)insertWorkCommand.ExecuteScalar();
+                int idWork = (int)insertWorkCommand.ExecuteScalar();
 
-            String updateWorkQuery = "UPDATE userInfo SET locationIdWork = @locationIdWork WHERE userName = @userName";
-            SqlCommand updateWorkCommand = new SqlCommand(updateWorkQuery, sqlConnection);
-            updateWorkCommand.Parameters.Add("@locationIdWork", SqlDbType.VarChar).Value = idWork;
-            updateWorkCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = txtNewUserName.Text;
+                String updateWorkQuery = "UPDATE userInfo SET locationIdWork = @locationIdWork WHERE userName = @userName";
+                SqlCommand updateWorkCommand = new SqlCommand(updateWorkQuery, sqlConnection);
+                updateWorkCommand.Parameters.Add("@locationIdWork", SqlDbType.VarChar).Value = idWork;
+                updateWorkCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = txtNewUserName.Text;
 
-            updateWorkCommand.ExecuteNonQuery();
+                updateWorkCommand.ExecuteNonQuery();
+            
 
-            if (sqlConnection.State == System.Data.ConnectionState.Open)
+                if (sqlConnection.State == System.Data.ConnectionState.Open)
+                    sqlConnection.Close();
+
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showNextDialog();", true);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
                 sqlConnection.Close();
-
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "showNextDialog();", true);
+            }
         }
+
+        /*Shows address and car panel for the user to enter car details*/
 
         protected void btnContinueGarage_Click(object sender, EventArgs e)
         {
             addressPanel.Visible = true;
             myGaragePanel.Visible = true;
         }
+
+        /*Renders Make dropdown on Page Load*/
 
         protected void bindMakeDropdown()
         {
@@ -177,6 +202,8 @@ namespace OurMPG
                     drpMake.DataTextField = "make";
                     drpMake.DataValueField = "make";
                     drpMake.DataBind();
+
+                    drpMake.Items.Insert(0, "--Select--");
                     
             /*catch (Exception ex)
             {
@@ -185,6 +212,8 @@ namespace OurMPG
             }*/
         }
 
+        /*Based on the Make, the Model dropdown values are rendered*/
+
         protected void drpMakeSelected_selectedIndexChanged(object sender, EventArgs e)
         {
             addressPanel.Visible = true;
@@ -192,20 +221,36 @@ namespace OurMPG
             
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
-            sqlConnection.Open();
-            SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT model FROM vehicle WHERE make = @make", sqlConnection);
-            SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
-            DataSet drpDS = new DataSet();
-            drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue);
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT model FROM vehicle WHERE make = @make", sqlConnection);
+                SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
 
-            drpAdapter.Fill(drpDS);
-            sqlConnection.Close();
+                drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue);
+                DataSet drpDS = new DataSet();
 
-            drpModel.DataSource = drpDS;
-            drpModel.DataTextField = "model";
-            drpModel.DataValueField = "model";
-            drpModel.DataBind();            
+                drpAdapter.Fill(drpDS);
+                sqlConnection.Close();
+
+                drpModel.DataSource = drpDS;
+                drpModel.DataTextField = "model";
+                drpModel.DataValueField = "model";
+
+                drpModel.DataBind();
+                drpModel.Items.Insert(0, "--Select--");
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+                finally
+            {
+                sqlConnection.Close();
+            }
         }
+
+        /*Renders the year based on the make and model*/
 
         protected void drpModelSelected_selectedIndexChanged(object sender, EventArgs e)
         {
@@ -213,23 +258,37 @@ namespace OurMPG
             myGaragePanel.Visible = true;
             
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT year FROM vehicle WHERE make = @make and model = @model", sqlConnection);
+                SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
+                DataSet drpDS = new DataSet();
+                drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue); ;
+                drpCommand.Parameters.Add("@model", SqlDbType.VarChar).Value = Convert.ToString(drpModel.SelectedValue);
 
-            sqlConnection.Open();
-            SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT year FROM vehicle WHERE make = @make and model = @model", sqlConnection);
-            SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
-            DataSet drpDS = new DataSet();
-            drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue); ;
-            drpCommand.Parameters.Add("@model", SqlDbType.VarChar).Value = Convert.ToString(drpModel.SelectedValue);
 
+                drpAdapter.Fill(drpDS);
+                sqlConnection.Close();
 
-            drpAdapter.Fill(drpDS);
-            sqlConnection.Close();
+                drpYear.DataSource = drpDS;
+                drpYear.DataTextField = "year";
+                drpYear.DataValueField = "year";
+                drpYear.DataBind();
 
-            drpYear.DataSource = drpDS;
-            drpYear.DataTextField = "year";
-            drpYear.DataValueField = "year";
-            drpYear.DataBind();
+                drpYear.Items.Insert(0, "--Select--");
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
+
+        /*Renders the car specifications based on the year, make and model*/
 
         protected void drpYearSelected_selectedIndexChanged(object sender, EventArgs e)
         {
@@ -237,23 +296,38 @@ namespace OurMPG
             myGaragePanel.Visible = true;
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
-            sqlConnection.Open();
-            SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT vehicleid, CONCAT(transmission, ' ',Displ, ' ',Cyl, ' ',driveStyle, ' ', vehicleClass) AS specs FROM vehicle WHERE make = @make and model = @model and year = @year", sqlConnection);
-            SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
-            DataSet drpDS = new DataSet();
-            drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue); ;
-            drpCommand.Parameters.Add("@model", SqlDbType.VarChar).Value = Convert.ToString(drpModel.SelectedValue);
-            drpCommand.Parameters.Add("@year", SqlDbType.VarChar).Value = Convert.ToString(drpYear.SelectedValue);
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand drpCommand = new SqlCommand("SELECT DISTINCT vehicleid, CONCAT(transmission, ' ',Displ, ' ',Cyl, ' ',driveStyle, ' ', vehicleClass) AS specs FROM vehicle WHERE make = @make and model = @model and year = @year", sqlConnection);
+                SqlDataAdapter drpAdapter = new SqlDataAdapter(drpCommand);
+                DataSet drpDS = new DataSet();
+                drpCommand.Parameters.Add("@make", SqlDbType.VarChar).Value = Convert.ToString(drpMake.SelectedValue); ;
+                drpCommand.Parameters.Add("@model", SqlDbType.VarChar).Value = Convert.ToString(drpModel.SelectedValue);
+                drpCommand.Parameters.Add("@year", SqlDbType.VarChar).Value = Convert.ToString(drpYear.SelectedValue);
 
 
-            drpAdapter.Fill(drpDS);
-            sqlConnection.Close();
+                drpAdapter.Fill(drpDS);
+                sqlConnection.Close();
 
-            drpSpecs.DataSource = drpDS;
-            drpSpecs.DataTextField = "specs";
-            drpSpecs.DataValueField = "vehicleId";
-            drpSpecs.DataBind();
+                drpSpecs.DataSource = drpDS;
+                drpSpecs.DataTextField = "specs";
+                drpSpecs.DataValueField = "vehicleId";
+                drpSpecs.DataBind();
+
+                drpSpecs.Items.Insert(0, "--Select--");
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
+
+       /*Keeps the address and car panel visible on the page*/
 
         protected void drpSpecsSelected_selectedIndexChanged(object sender, EventArgs e)
         {
@@ -261,11 +335,15 @@ namespace OurMPG
             myGaragePanel.Visible = true;
         }
 
+        /*Keeps the address and car panel visible on the page*/
         protected void drpOwnerSelected_selectedIndexChanged(object sender, EventArgs e)
         {
             addressPanel.Visible = true;
             myGaragePanel.Visible = true;
         }
+
+        /*Maps the car to the user*/
+
         protected void btnAddCar_Click(object sender, EventArgs e)
         {
             addressPanel.Visible = true;
@@ -277,7 +355,7 @@ namespace OurMPG
 
             SqlConnection sqlConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
-            String insertVehicleQuery = "INSERT INTO userVehicle(userId, vehicleId, vehicleName, color, ownershipStatus, createdBy, createdDate) VALUES (@userId, @vehicleId, @vehicleName, @color, @ownershipStatus, 'USER', @currentDate)";
+            String insertVehicleQuery = "INSERT INTO userVehicle(userId, vehicleId, vehicleName, color, ownershipStatus, createdBy, createdDate) VALUES (@userId, @vehicleId, @vehicleName, @color, @ownershipStatus, @userName, @currentDate)";
             SqlCommand insertVehicleCommand = new SqlCommand(insertVehicleQuery, sqlConnection);
             insertVehicleCommand.Parameters.Add("@userId", SqlDbType.VarChar).Value = userid;
             insertVehicleCommand.Parameters.Add("@vehicleId", SqlDbType.VarChar).Value = vehicleId;
@@ -285,6 +363,7 @@ namespace OurMPG
             insertVehicleCommand.Parameters.Add("@color", SqlDbType.VarChar).Value = txtColor.Text;
             insertVehicleCommand.Parameters.Add("@ownershipStatus", SqlDbType.VarChar).Value = drpOwner.Text;
             insertVehicleCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
+            insertVehicleCommand.Parameters.Add("@userName", SqlDbType.VarChar).Value = (string)Session["UserName"];
 
             try
             {
@@ -313,6 +392,7 @@ namespace OurMPG
 
         }
 
+        /*Clears the selection if user owns another car*/
         protected void btnNextCarYes_Click(object sender, EventArgs e)
         {
             addressPanel.Visible = true;
@@ -324,8 +404,9 @@ namespace OurMPG
             drpOwner.SelectedIndex = 0;
             txtColor.Text = String.Empty;
             txtCarName.Text = String.Empty;
-            bindMakeDropdown();
         }
+
+        /*Redirects user to Home if he does not another car*/
 
         protected void btnNextCarNo_Click(object sender, EventArgs e)
         {
