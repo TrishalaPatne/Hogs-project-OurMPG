@@ -11,11 +11,12 @@ using System.Data.SqlClient;
 
 namespace OurMPG
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class UserReports : System.Web.UI.Page
     {
-        string user = "alkak";
+       
         protected void Page_Load(object sender, EventArgs e)
         {
+            string user = Session["userName"].ToString();
             if (!Page.IsPostBack)
             {
                 //average mpg tab select make
@@ -52,7 +53,7 @@ namespace OurMPG
         //fuel history menu
         protected void btnGenerate_click(object sender, EventArgs e)
         {
-
+            string user = Session["userName"].ToString();
             GridView1.DataSource = fuelPurchasedata(user);
             GridView1.DataBind();
         }
@@ -134,7 +135,7 @@ namespace OurMPG
         }
         protected void btnSubmitm4_click(object sender, EventArgs e)
         {
-
+            string user = Session["userName"].ToString();
             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
@@ -254,6 +255,7 @@ namespace OurMPG
         
         protected DataTable compare(string m, string md, string y)
         {
+            string user = Session["userName"].ToString();
             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("compare", con);
@@ -270,6 +272,7 @@ namespace OurMPG
         //fuel pruchase summery menu
         protected void btnrep_click(object sender, EventArgs e)
         {
+            string user = Session["userName"].ToString();
             label5.Visible = false;
             GridView2.Visible = false;
             if (rdbtn1.Checked == true)
@@ -314,6 +317,7 @@ namespace OurMPG
         }
         private DataTable userVehicleModel(string make)
         {
+            string user = Session["userName"].ToString();
             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("uservehiclemodel", con);
@@ -336,6 +340,7 @@ namespace OurMPG
         }
         private DataTable userVehicleYear(string make,string model)
         {
+            string user = Session["userName"].ToString();
             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(CS);
             SqlDataAdapter da = new SqlDataAdapter("uservehicleyear", con);

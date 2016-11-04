@@ -1,8 +1,8 @@
 ﻿
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="UserReports.aspx.cs" Inherits="OurMPG.WebForm1" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/OurMPG.Master" AutoEventWireup="true" CodeBehind="UserReports.aspx.cs" Inherits="OurMPG.UserReports" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+    <form id="userReportsForm" runat="server">
     <div class="container">
         <h2>Reports</h2>
         <ul class="nav nav-tabs" id="reportstab">
@@ -57,7 +57,7 @@
                 <p>Please Enter Automobile data to see average MPG of other user's vehicle</p>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Make</label>
-                    <select id="selectMake" runat="server" onchange="this.form.submit()" onserverchange="selectMake_Changed" >
+                    <select id="selectMake" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="selectMake_Changed" >
                         <option value="type1">Select</option>
                     </select>
 
@@ -66,14 +66,14 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Model</label>
-                    <select id="selectModel" runat="server" onchange="this.form.submit()" onserverchange="selectModel_Changed">
+                    <select id="selectModel" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="selectModel_Changed">
                         <option value="type1">Select</option>
                     </select>
 
                 </div>
                 <div class="form-group" >
                     <label class="col-md-4 control-label">Year</label>
-                    <select id="selectYear" runat="server" onchange="this.form.submit()" >
+                    <select id="selectYear" runat="server" onchange="javascript:userReportsForm.submit()" >
                         <option value="type1">Select</option>
                     </select>
                     <%--  --%>
@@ -98,7 +98,7 @@
                     </br>
                     <div class="form-group">
                     <label class="col-md-4 control-label">Make</label>
-                    <select id="stMake" runat="server" onchange="this.form.submit()" onserverchange="stMake_Changed" >
+                    <select id="stMake" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="stMake_Changed" >
                         <option value="type1">Select</option>
                     </select>
 
@@ -107,14 +107,14 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Model</label>
-                    <select id="stModel" runat="server" onchange="this.form.submit()" onserverchange="stModel_Changed">
+                    <select id="stModel" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="stModel_Changed">
                         <option value="type1">Select</option>
                     </select>
 
                 </div>
                 <div class="form-group" >
                     <label class="col-md-4 control-label">Year</label>
-                    <select id="stYear" runat="server" onchange="this.form.submit()" >
+                    <select id="stYear" runat="server" onchange="javascript:userReportsForm.submit()" >
                         <option value="type1">Select</option>
                     </select>
                 </div>
@@ -132,11 +132,11 @@
             <%--</br>--%>
             <div class="form-group">
                 <label class="col-md-4 control-label">From Date</label>
-                <input type="date" id="date1" runat="server" onchange="this.form.submit()"/>
+                <input type="date" id="date1" runat="server" onchange="javascript:userReportsForm.submit()"/>
             </div>
         <div class="form-group">
                 <label class="col-md-4 control-label">To Date</label>
-                <input type="date" id="date2" runat="server" onchange="this.form.submit()" />
+                <input type="date" id="date2" runat="server" onchange="javascript:userReportsForm.submit()" />
             </div>
             <%--  --%>
                 </br>
@@ -185,20 +185,20 @@
                 <p>Please Enter Automobile data for comparision with your vehicle</p>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Make</label>
-                    <select id="sMake" runat="server" onchange="this.form.submit()" onserverchange="sMake_Changed">
+                    <select id="sMake" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="sMake_Changed">
                         <option value="type1">Select</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Model</label>
-                    <select id="sModel" runat="server" onchange="this.form.submit()" onserverchange="sModel_Changed">
+                    <select id="sModel" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="sModel_Changed">
                         <option value="type1">Select</option>
                     </select>
 
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">Year</label>
-                    <select id="sYear" runat="server" onchange="this.form.submit()" onserverchange="sYear_Changed">
+                    <select id="sYear" runat="server" onchange="javascript:userReportsForm.submit()" onserverchange="sYear_Changed">
                         <option value="type1">Select</option>
                     </select>
                 </div>
@@ -262,6 +262,7 @@
                 }
             });
         </script>
+        </form>
 </asp:Content>
 
 

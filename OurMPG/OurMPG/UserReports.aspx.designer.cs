@@ -10,7 +10,16 @@
 namespace OurMPG {
     
     
-    public partial class WebForm1 {
+    public partial class UserReports {
+        
+        /// <summary>
+        /// userReportsForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm userReportsForm;
         
         /// <summary>
         /// btnSubmit control.

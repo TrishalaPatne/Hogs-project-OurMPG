@@ -32,7 +32,9 @@
                         <li id="listLogin" runat="server"><a href="Login.aspx">Login</a></li>
                         <li id="listRegister" runat="server"><a href="Register.aspx">Register</a></li>
                         <li id="listVehicle" runat="server"><a href="Vehicle.aspx">Vehicle</a></li>
+                        <li id="listFuelPurchase" runat="server"><a href="FuelPurchase.aspx">Fuel Purchase</a></li>
                         <li id="listGasStation" runat="server"><a href="GasStation.aspx">GasStation</a></li>
+                        <li id="listUserReports" runat="server"><a href="UserReports.aspx">Reports</a></li>
                     </ul>
                     
                 </div>
