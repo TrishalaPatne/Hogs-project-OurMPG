@@ -59,7 +59,7 @@
         </div>
         <div class="form-group col-sm-6">
             <label for="txtHouseholdSize">Household Size</label>
-            <asp:textbox type="text" class="form-control" id="txtHouseholdSize" placeholder="e.g. 1" runat="server"></asp:textbox>
+            <asp:textbox type="number" class="form-control" id="txtHouseholdSize" placeholder="e.g. 1" runat="server"></asp:textbox>
         </div>
         </div>
         <div class="form-group col-xs-8"></div>
