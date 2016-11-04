@@ -11,7 +11,7 @@
               <div class="caption">
                 <h4>Record Fuel Purchase</h4>
                 <p>Keep track of your fuel purchases and estimate your car's efficiency</p>
-                <p><a href="FuelPurchase.aspx" class="btn btn-info btn-xs" role="button">Record Now</a></p>
+                <p><a href="#" class="btn btn-info btn-xs" role="button">Record Now</a></p>
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@
               <div class="caption">
                 <h4>View Reports</h4>
                 <p>Compare your vehicle's ratings and performance with other vehicles.</p>
-                <p><a href="UserReports.aspx" class="btn btn-info btn-xs" role="button">Check Reports</a></p>
+                <p><a href="#" class="btn btn-info btn-xs" role="button">Check Reports</a></p>
             </div>
           </div>
         </div>
