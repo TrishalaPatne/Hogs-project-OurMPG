@@ -279,8 +279,8 @@ namespace OurMPG
                         outputval.Direction = ParameterDirection.Output;
 
                         oCommand.ExecuteNonQuery();
-                        String outputvalue = oCommand.Parameters["@ctr"].Value.ToString();
-                        return Convert.ToInt32(outputvalue);
+                        int outputvalue = (int)oCommand.Parameters["@ctr"].Value;
+                        return outputvalue;
                     }
                 }
             }
