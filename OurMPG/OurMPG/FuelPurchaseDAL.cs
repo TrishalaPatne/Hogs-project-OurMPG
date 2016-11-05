@@ -258,7 +258,6 @@ namespace OurMPG
                         oCommand.Parameters.AddWithValue("@Cyl", Convert.ToDecimal(VehicleName.Split(' ')[5].ToString().Substring(0, 3)));
                         oCommand.Parameters.AddWithValue("@driveStyle", VehicleName.Split(' ')[7].ToString());
                         oCommand.Parameters.AddWithValue("@vehicleClass", VehicleName.Split(' ')[8].ToString() + " " + VehicleName.Split(' ')[9].ToString());
-                        oCommand.Parameters.AddWithValue("@uservehiclecolor", VehicleName.Split(' ')[3].ToString());
                         oCommand.Parameters.AddWithValue("@ZipCode", Zipcode);
                         oCommand.Parameters.AddWithValue("@fuelType", fuelType);
                         oCommand.Parameters.AddWithValue("@StreetAddress", StreetAddress);
@@ -279,8 +278,8 @@ namespace OurMPG
                         outputval.Direction = ParameterDirection.Output;
 
                         oCommand.ExecuteNonQuery();
-                        int outputvalue = (int)oCommand.Parameters["@ctr"].Value;
-                        return outputvalue;
+                        String outputvalue = oCommand.Parameters["@ctr"].Value.ToString();
+                        return Convert.ToInt32(outputvalue);
                     }
                 }
             }
