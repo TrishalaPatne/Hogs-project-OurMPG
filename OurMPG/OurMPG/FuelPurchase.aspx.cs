@@ -10,8 +10,7 @@ namespace OurMPG
 {
     public partial class FuelPurchase : System.Web.UI.Page
     {
-        //string m_sUserId = "neels";
-        //string m_sPassword = string.Empty;
+     
         FuelPurchaseBusiness m_oBusiness;
         FuelPurchaseDAL m_oDAL;
         DataSet oVehicleSet = new DataSet();

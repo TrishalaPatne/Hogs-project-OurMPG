@@ -250,14 +250,14 @@ namespace OurMPG
                     {
                         oCommand.CommandType = CommandType.StoredProcedure;
                         oConn.Open();
-                        oCommand.Parameters.AddWithValue("@VehicleYear", VehicleName.Split(' ')[0].ToString());
-                        oCommand.Parameters.AddWithValue("@VehicleModel", VehicleName.Split(' ')[2].ToString());
-                        oCommand.Parameters.AddWithValue("@VehicleMake", VehicleName.Split(' ')[1].ToString());
-                        oCommand.Parameters.AddWithValue("@VehicleTrans", VehicleName.Split(' ')[4].ToString());
-                        oCommand.Parameters.AddWithValue("@VehicleDispl", Convert.ToDecimal(VehicleName.Split(' ')[6].ToString().Substring(0, 3)));
-                        oCommand.Parameters.AddWithValue("@Cyl", Convert.ToDecimal(VehicleName.Split(' ')[5].ToString().Substring(0, 3)));
-                        oCommand.Parameters.AddWithValue("@driveStyle", VehicleName.Split(' ')[7].ToString());
-                        oCommand.Parameters.AddWithValue("@vehicleClass", VehicleName.Split(' ')[8].ToString() + " " + VehicleName.Split(' ')[9].ToString());
+                        oCommand.Parameters.AddWithValue("@VehicleYear", VehicleName.Split('*')[0].ToString());
+                        oCommand.Parameters.AddWithValue("@VehicleModel", VehicleName.Split('*')[2].ToString());
+                        oCommand.Parameters.AddWithValue("@VehicleMake", VehicleName.Split('*')[1].ToString());
+                        oCommand.Parameters.AddWithValue("@VehicleTrans", VehicleName.Split('*')[4].ToString());
+                        oCommand.Parameters.AddWithValue("@VehicleDispl", Convert.ToDecimal(VehicleName.Split('*')[6].ToString().Substring(0)));
+                        oCommand.Parameters.AddWithValue("@Cyl", Convert.ToDecimal(VehicleName.Split('*')[5].ToString().Substring(0)));
+                        oCommand.Parameters.AddWithValue("@driveStyle", VehicleName.Split('*')[7].ToString());
+                        oCommand.Parameters.AddWithValue("@vehicleClass", VehicleName.Split('*')[8].ToString());
                         oCommand.Parameters.AddWithValue("@ZipCode", Zipcode);
                         oCommand.Parameters.AddWithValue("@fuelType", fuelType);
                         oCommand.Parameters.AddWithValue("@StreetAddress", StreetAddress);
