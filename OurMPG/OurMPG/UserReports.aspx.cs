@@ -135,6 +135,9 @@ namespace OurMPG
         }
         protected void btnSubmitm4_click(object sender, EventArgs e)
         {
+            GridView3.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
             string user = Session["userName"].ToString();
             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
@@ -145,7 +148,7 @@ namespace OurMPG
                 cmd.Parameters.AddWithValue("@model", sModel.Value.ToString());
                 cmd.Parameters.AddWithValue("@year", sYear.Value.ToString());
                 cmd.Parameters.AddWithValue("@user", user);
-
+                cmd.Parameters.AddWithValue("@epa", selectEPA.Value.ToString());
                 SqlParameter output = new SqlParameter();
                 output.ParameterName = "@MPG";
                 output.SqlDbType = System.Data.SqlDbType.Int;
@@ -157,20 +160,25 @@ namespace OurMPG
 
                 if (string.IsNullOrEmpty(output.Value.ToString()))
                 {
+                    label2.Visible = true;
                     label2.InnerText = "No Records Found for your vehicle";
 
                 }
                 else
                 {
+                    label2.Visible = true;
                     label2.InnerText = "Your Average MPG =" + output.Value.ToString();
                 }
-                DataTable cmp= compare(sMake.Value.ToString(), sModel.Value.ToString(), sYear.Value.ToString());
+                DataTable cmp= compare(sMake.Value.ToString(), sModel.Value.ToString(), sYear.Value.ToString(),selectEPA.Value.ToString());
                 if (cmp.Rows.Count==0)
                 {
+                    label3.Visible = true;
                     label3.InnerText = "No records found for other vehicle";
                 }
                else
                 {
+                    label3.Visible = true;
+                    GridView3.Visible = true;
                     label3.InnerText = "Other user's MPG Records";
                     GridView3.DataSource = cmp;
                     GridView3.DataBind();
@@ -253,7 +261,7 @@ namespace OurMPG
             return dataTable;
         }
         
-        protected DataTable compare(string m, string md, string y)
+        protected DataTable compare(string m, string md, string y,string e)
         {
             string user = Session["userName"].ToString();
             string CS = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -264,6 +272,7 @@ namespace OurMPG
             da.SelectCommand.Parameters.Add(new SqlParameter("@make", m));
             da.SelectCommand.Parameters.Add(new SqlParameter("@model", md));
             da.SelectCommand.Parameters.Add(new SqlParameter("@year", y));
+            da.SelectCommand.Parameters.Add(new SqlParameter("@epa", e));
 
             DataTable dataTable = new DataTable();
             da.Fill(dataTable);
