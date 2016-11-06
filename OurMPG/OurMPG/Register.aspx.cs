@@ -143,12 +143,12 @@ namespace OurMPG
 
                 String insertWorkQuery = "INSERT INTO location(zipCode, streetAddress, latitude, longtitude, city, state, sourceIndicator, createdBy, createdDate) output INSERTED.locationId VALUES (@ZipCode, @StreetAddress, @Latitude, @Longtitude, @City, @State, 2, @UserName, @currentDate)";
                 SqlCommand insertWorkCommand = new SqlCommand(insertWorkQuery, sqlConnection);
-                insertWorkCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtHomeZip.Text;
-                insertWorkCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtHomeStreetAddress.Text;
-                insertWorkCommand.Parameters.Add("@Latitude", SqlDbType.VarChar).Value = txtHomeLat.Text;
-                insertWorkCommand.Parameters.Add("@Longtitude", SqlDbType.VarChar).Value = txtHomeLong.Text;
-                insertWorkCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtHomeCity.Text;
-                insertWorkCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtHomeState.Text;
+                insertWorkCommand.Parameters.Add("@ZipCode", SqlDbType.VarChar).Value = txtWorkZip.Text;
+                insertWorkCommand.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = txtWorkStreetAddress.Text;
+                insertWorkCommand.Parameters.Add("@Latitude", SqlDbType.VarChar).Value = txtWorkLat.Text;
+                insertWorkCommand.Parameters.Add("@Longtitude", SqlDbType.VarChar).Value = txtWorkLong.Text;
+                insertWorkCommand.Parameters.Add("@City", SqlDbType.VarChar).Value = txtWorkCity.Text;
+                insertWorkCommand.Parameters.Add("@State", SqlDbType.VarChar).Value = txtWorkState.Text;
                 insertWorkCommand.Parameters.Add("@currentDate", SqlDbType.Date).Value = currentDate;
                 insertWorkCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = txtNewUserName.Text;
 
